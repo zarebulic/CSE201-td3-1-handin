@@ -49,7 +49,7 @@ double* append_to_array(double element,
       max_size += 5;
   }
   array[current_size] = element;
-  current_size += 1;
+  current_size ++;
   return array;
 }
 
@@ -124,4 +124,26 @@ void merge_telemetry(double **telemetries,
                      int &global_telemetry_current_size,
                      int &global_telemetry_max_size) {
   // IMPLEMENT YOUR FUNCTION HERE
-}
+  for(int i = 0; i < tot_telemetries; i++)
+  {
+      for(int j = 0; j < telemetries_sizes[i]; j+=3)
+      {
+          global_telemetry = append_to_array(telemetries[i][j], global_telemetry, global_telemetry_current_size, global_telemetry_max_size);
+          global_telemetry = append_to_array(telemetries[i][j+1], global_telemetry, global_telemetry_current_size, global_telemetry_max_size);
+          global_telemetry = append_to_array(telemetries[i][j+2], global_telemetry, global_telemetry_current_size, global_telemetry_max_size);
+
+      }
+  }
+  int i, j;
+  int triplets = global_telemetry_current_size/3 ;
+  for (i = 0; i < triplets-1; i++)
+    {
+  for (j = 0; j < triplets-i-1; j++)
+      if (global_telemetry[3*j] > global_telemetry[3*(j+1)])
+      {
+          swap(global_telemetry[3*j + 1], global_telemetry[3*(j+1)+1]);
+          swap(global_telemetry[3*j], global_telemetry[3*(j+1)]);
+          swap(global_telemetry[3*j + 2], global_telemetry[3*(j+1)+2]);
+      }
+    }
+  }
