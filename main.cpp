@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
 
   {
 
-        std::cout << "different message"<< std::endl;
+        std::cout << "message"<< std::endl;
 
   }
   // END OF THE CUSTOM CODE SECTION
